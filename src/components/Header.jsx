@@ -1,27 +1,25 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { FaSignOutAlt } from "react-icons/fa";
 
 const Header = () => {
     return (
-        <div className="navbar bg-base-300">
-            <div className="flex-1">
-                <a className="btn btn-ghost text-xl">Flavors of India</a>
-            </div>
-            <div className="flex-none gap-2">
-                <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </div>
+        <div className="navbar container mx-auto justify-between">
+            <button className="font-bold text-2xl">Flavors of India</button>
+            <div className='gap-8'>
+                <NavLink to='/' className={({ isActive }) => isActive ? ' font-semibold underline underline-offset-8 rounded-lg text-xl hover:text-gray-500'
+                    : 'text-xl  font-semibold hover:text-gray-500'}>Home
+                </NavLink>
+                <NavLink to='blog' className={({ isActive }) => isActive ? ' font-semibold underline underline-offset-8 rounded-lg text-xl hover:text-gray-500'
+                    : 'text-xl font-semibold hover:text-gray-500'}>Blog
+                </NavLink>
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                    <div className="w-10 rounded-full">
+                        <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                     </div>
-                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                        <li>
-                            <a className="justify-between">
-                                Profile
-                            </a>
-                        </li>
-                        <li><a>Logout</a></li>
-                    </ul>
                 </div>
+                <Link className='flex items-center gap-1'><FaSignOutAlt /> <small>SignOut</small></Link>
+
             </div>
         </div>
     );
