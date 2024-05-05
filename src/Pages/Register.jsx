@@ -3,24 +3,24 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
     return (
-        <div className="max-w-3xl mx-auto hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen bg-cover bg-center relative" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url(https://static.vecteezy.com/system/resources/previews/030/643/234/non_2x/of-indian-food-with-no-background-free-photo.jpg)" }}>
             <div className="hero-content flex-col ">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Please Register !</h1>
+                    <h1 className="text-white text-5xl font-bold mb-7">Please Register !</h1>
                 </div>
-                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card shrink-0 w-full max-w-sm bg-opacity-80 shadow-2xl bg-base-100">
                     <form className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" placeholder="Enter your Name" className="input input-bordered" required />
+                            <input type="text" placeholder="Enter your name" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo</span>
                             </label>
-                            <input type="text" placeholder="Enter your Photo URL" className="input input-bordered"/>
+                            <input type="text" placeholder="Enter your photo URL" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -33,14 +33,17 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" placeholder="Enter your password" className="input input-bordered" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                        </div>
+                        <div className="form-control">
+                            <label className="justify-start gap-1 label cursor-pointer">
+                            <input type="checkbox" className="checkbox checkbox-xs" /> 
+                                <span className="label-text">Accept <Link className='underline text-blue-500' >terms and conditions</Link></span>
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Sign In</button>
+                            <button className="btn btn-neutral">Sign In</button>
                         </div>
-                        <p><small>Already have an account? <Link className='underline text-blue-500' to={'/login'}>Sign In</Link></small></p>
+                        <p className='label'><small>Already have an account? <Link className='underline text-blue-500' to={'/login'}>Sign in</Link></small></p>
                     </form>
                 </div>
             </div>

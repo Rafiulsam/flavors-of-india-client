@@ -6,7 +6,6 @@ const LoginLayout = () => {
     return (
         <div>
             <Header></Header>
-            <h1>LoginLayout</h1>
             <Outlet></Outlet>
         </div>
     );
