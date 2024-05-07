@@ -5,7 +5,13 @@ import Logo from '../images/logo.png'
 import { AuthContext } from '../Providers/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogout = ()=>{
+        logOut()
+        .then(()=>{console.log('user sign out successfully')})
+        .catch(error => console.error(error))
+    }
     return (
         <div className="navbar justify-between px-20 bg-gradient-to-t from-orange-400 to-amber-800">
             <Link to='/' className="text-white font-bold text-2xl"><img className='w-52' src={Logo} alt="" /></Link>
@@ -25,7 +31,7 @@ const Header = () => {
                         </div>
                     </div>
 
-                        <Link className='flex items-center gap-1'><FaSignOutAlt /> <small>SignOut</small>
+                        <Link ><button className='flex items-center gap-1' onClick={handleLogout}><FaSignOutAlt /> <small>SignOut</small></button>
                         </Link>
                     </>
                         : <Link to={'/login'} className='text-black flex items-center gap-1'><FaSignInAlt /> Sign In</Link>
