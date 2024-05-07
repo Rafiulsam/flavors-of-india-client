@@ -1,8 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const Login = () => {
+    // Authentication context
+    const { signInWithEmail, createUserWithGoogle } = useContext(AuthContext)
+
+    // Login event handler
+    const handleLogin = event => {
+        // Prevent default form submission
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        // user sign in
+        signInWithEmail(email, password)
+        .then(result=>{
+            const loggedUser = result.user
+            console.log(loggedUser);
+        })
+        .catch(error => console.log(error))
+    }
+
+     // Google sign in event handler
+     const handleGoogleLogin = () => {
+        createUserWithGoogle()
+            .then(result => {
+                const createdUser = result.user
+                console.log(createdUser);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
     return (
         <div className="hero min-h-screen bg-cover bg-center relative" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url(https://st4.depositphotos.com/1003940/25295/i/450/depositphotos_252955842-stock-photo-assortment-of-various-kinds-of.jpg)" }}>
             <div className="hero-content flex-col mt-20">
@@ -10,18 +42,18 @@ const Login = () => {
                     <h1 className="text-white text-5xl font-bold mb-7">Please Sign In !</h1>
                 </div>
                 <div className="card shrink-0 w-full max-w-sm bg-opacity-80 shadow-lg bg-base-100">
-                    <form className="card-body">
+                    <form className="card-body" onSubmit={handleLogin}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="Enter your email" className="input input-bordered" required />
+                            <input type="email" name='email' placeholder="Enter your email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="Enter your password" className="input input-bordered" required />
+                            <input type="password" name='password' placeholder="Enter your password" className="input input-bordered" required />
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
@@ -35,7 +67,7 @@ const Login = () => {
                 <div>
                     <p className="text-white mt-7 mb-3">Or Sign Up Using</p>
                     <div className='flex justify-evenly text-white text-2xl mb-10'>
-                        <button> <FaGoogle></FaGoogle></button>
+                        <button onClick={handleGoogleLogin}> <FaGoogle></FaGoogle></button>
                         <button>
                             <FaGithub></FaGithub>
                         </button>

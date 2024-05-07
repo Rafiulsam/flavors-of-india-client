@@ -2,24 +2,30 @@ import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     // Authentication context
     const { createUserWithGoogle, createUserWithEmail } = useContext(AuthContext)
 
-    // Email sign in event handler
+    // Register event handler
     const handleRegister = event => {
-        event.preventDefault() // Prevent default form submission
+        // Prevent default form submission
+        event.preventDefault() 
         const form = event.target;
         const name = form.name.value;
+        const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, email, password);
+        // create user with email
         createUserWithEmail(email, password)
             .then(result => {
                 const createdUser = result.user
                 console.log(createdUser);
+                updateUserProfile(createdUser, name, photo)
                 form.reset()
+
             })
             .catch(error => console.log(error))
 
@@ -36,6 +42,14 @@ const Register = () => {
                 console.log(error);
             })
     }
+
+    // User profile update event handler
+    const updateUserProfile = (user, name, photo) => {
+        updateProfile(user,{
+            displayName: name , photoURL: photo
+        })
+    }
+
     return (
         <div className="hero min-h-screen bg-cover bg-center relative" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url(https://static.vecteezy.com/system/resources/previews/030/643/234/non_2x/of-indian-food-with-no-background-free-photo.jpg)" }}>
             <div className="hero-content flex-col mt-20">
@@ -75,7 +89,7 @@ const Register = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-neutral">Sign In</button>
+                            <button className="btn btn-neutral">Submit</button>
                         </div>
                         <p className='label'><small>Already have an account? <Link className='underline text-blue-500' to={'/login'}>Sign in</Link></small></p>
                     </form>
