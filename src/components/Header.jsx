@@ -3,14 +3,15 @@ import { Link, NavLink } from 'react-router-dom';
 import { FaSignOutAlt, FaSignInAlt } from "react-icons/fa";
 import Logo from '../images/logo.png'
 import { AuthContext } from '../Providers/AuthProvider';
+import default_user from '../images/default_user.png'
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
 
-    const handleLogout = ()=>{
+    const handleLogout = () => {
         logOut()
-        .then(()=>{console.log('user sign out successfully')})
-        .catch(error => console.error(error))
+            .then(() => { console.log('user sign out successfully') })
+            .catch(error => console.error(error))
     }
     return (
         <div className="navbar justify-between px-20 bg-gradient-to-t from-orange-400 to-amber-800">
@@ -26,13 +27,11 @@ const Header = () => {
                     user ? <><div className="tooltip tooltip-bottom" data-tip={user.displayName}>
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full" >
-                                <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                <img alt="Tailwind CSS Navbar component" src={user.photoURL? user.photoURL: default_user } />
                             </div>
                         </div>
                     </div>
-
-                        <Link ><button className='flex items-center gap-1' onClick={handleLogout}><FaSignOutAlt /> <small>SignOut</small></button>
-                        </Link>
+                        <button className='flex items-center gap-1' onClick={handleLogout}><FaSignOutAlt /> <small>SignOut</small></button>
                     </>
                         : <Link to={'/login'} className='text-black flex items-center gap-1'><FaSignInAlt /> Sign In</Link>
                 }
