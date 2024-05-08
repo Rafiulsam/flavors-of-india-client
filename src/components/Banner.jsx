@@ -9,7 +9,7 @@ const Banner = () => {
                 <div className="max-w-2xl">
                     <h1 className="mb-5 text-5xl font-bold">Welcome to Flavors of India</h1>
                     <p className="mb-5">Your ultimate destination for authentic Indian recipes! Embark on a culinary journey through the vibrant and diverse flavors of India's rich cuisine. From aromatic curries to tantalizing street food, discover delicious recipes that will transport your taste buds to the heart of India's culinary heritage.</p>
-                    <button className="btn btn-neutral">Get Started</button>
+                    {/* <button className="btn btn-neutral">Get Started</button> */}
                 </div>
             </div>
         </div>
