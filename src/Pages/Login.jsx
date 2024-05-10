@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
+import img from '../images/login.jpg'
 
 const Login = () => {
     // Authentication context
@@ -37,7 +38,7 @@ const Login = () => {
             })
     }
     return (
-        <div className="hero min-h-screen bg-cover bg-center relative" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url(https://st4.depositphotos.com/1003940/25295/i/450/depositphotos_252955842-stock-photo-assortment-of-various-kinds-of.jpg)" }}>
+        <div className="hero min-h-screen bg-cover bg-center relative" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url(${img})` }}>
             <div className="hero-content flex-col mt-20">
                 <div className="text-center lg:text-left">
                     <h1 className="text-white text-5xl font-bold mb-7">Please Sign In !</h1>

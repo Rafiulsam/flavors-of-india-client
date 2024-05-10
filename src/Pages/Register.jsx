@@ -3,6 +3,7 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import img from '../images/register.jpg'
 
 const Register = () => {
     // Authentication context
@@ -51,7 +52,7 @@ const Register = () => {
     }
 
     return (
-        <div className="hero min-h-screen bg-cover bg-center relative" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url(https://static.vecteezy.com/system/resources/previews/030/643/234/non_2x/of-indian-food-with-no-background-free-photo.jpg)" }}>
+        <div className="hero min-h-screen bg-cover bg-center relative" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url(${img})` }}>
             <div className="hero-content flex-col mt-20">
                 <div className="text-center lg:text-left">
                     <h1 className="text-white text-5xl font-bold mb-7">Please Register !</h1>
