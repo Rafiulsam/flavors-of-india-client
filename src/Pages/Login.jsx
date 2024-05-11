@@ -7,8 +7,6 @@ import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-    const [error, setError] = useState('')
-
     // Authentication context
     const { signInWithEmail, createUserWithGoogle } = useContext(AuthContext)
 
@@ -27,7 +25,20 @@ const Login = () => {
                 console.log(loggedUser);
                 form.reset()
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+                toast.error(error.message, {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Slide
+                })
+            })
     }
 
     // Google sign in event handler
@@ -83,7 +94,7 @@ const Login = () => {
             <p>{error}</p>
             <ToastContainer
                 position="top-center"
-                autoClose={2000}
+                autoClose={5000}
                 hideProgressBar
                 newestOnTop={false}
                 closeOnClick

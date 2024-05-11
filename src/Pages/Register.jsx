@@ -85,9 +85,33 @@ const Register = () => {
                 console.log(createdUser);
                 updateUserProfile(createdUser, name, photo)
                 form.reset()
+                toast.success('Account has been successfully created', {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Slide
+                })
 
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+                toast.error(error.message, {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Slide
+                })
+            })
 
     }
 
