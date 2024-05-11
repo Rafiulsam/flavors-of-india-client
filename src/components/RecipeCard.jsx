@@ -1,22 +1,26 @@
 import React from 'react';
 import FavBtn from './FavBtn';
-import { Slide, ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+// Toastify prevent duplicate
+const customId = "custom-id-yes";
+const customWidth = "mx-auto w-80 lg:w-full";
 
 const RecipeCard = ({ recipe }) => {
     const { recipe_name, cooking_method, ingredients, rating } = recipe;
 
     const addToFav = () => {
         toast.success('Successfully added to favorite', {
+            toastId: customId,
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: true,
             closeOnClick: true,
-            pauseOnHover: false,
+            pauseOnHover: true,
             draggable: false,
-            progress: undefined,
             theme: "light",
-            transition: Slide,
+            className: customWidth
         });
     }
     return (
@@ -32,22 +36,23 @@ const RecipeCard = ({ recipe }) => {
                 </div>
                 <p><strong>Cooking method:</strong> {cooking_method}</p>
                 <div className="card-actions items-center">
-                    <p>{rating}</p>
+                    <p><strong>Ratings: </strong>{rating}</p>
                     <button className="tooltip" data-tip="Add to favorite" onClick={addToFav}><FavBtn></FavBtn></button>
                 </div>
             </div>
             <ToastContainer
                 position="top-center"
                 autoClose={2000}
+                limit={1}
                 hideProgressBar
                 newestOnTop={false}
                 closeOnClick
                 rtl={false}
                 pauseOnFocusLoss={false}
                 draggable={false}
-                pauseOnHover={false}
+                pauseOnHover
                 theme="light"
-                transition:Slide />
+            />
         </div>
     );
 };

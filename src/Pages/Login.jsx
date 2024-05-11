@@ -1,10 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import img from '../images/login.jpg'
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+    const [error, setError] = useState('')
+
     // Authentication context
     const { signInWithEmail, createUserWithGoogle } = useContext(AuthContext)
 
@@ -18,16 +22,16 @@ const Login = () => {
         console.log(email, password);
         // user sign in
         signInWithEmail(email, password)
-        .then(result=>{
-            const loggedUser = result.user
-            console.log(loggedUser);
-            form.reset()
-        })
-        .catch(error => console.log(error))
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser);
+                form.reset()
+            })
+            .catch(error => console.log(error))
     }
 
-     // Google sign in event handler
-     const handleGoogleLogin = () => {
+    // Google sign in event handler
+    const handleGoogleLogin = () => {
         createUserWithGoogle()
             .then(result => {
                 const createdUser = result.user
@@ -76,6 +80,19 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <p>{error}</p>
+            <ToastContainer
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={false}
+                pauseOnHover={false}
+                theme="light"
+                transition:Slide />
         </div>
     );
 };

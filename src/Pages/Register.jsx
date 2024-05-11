@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import img from '../images/register.jpg'
+import { Slide, ToastContainer, toast } from 'react-toastify';
 
 const Register = () => {
     // Authentication context
@@ -12,13 +13,71 @@ const Register = () => {
     // Register event handler
     const handleRegister = event => {
         // Prevent default form submission
-        event.preventDefault() 
+        event.preventDefault()
         const form = event.target;
         const name = form.name.value;
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, email, password);
+        // Validate password strength
+        if (!/(?=.*[A-Z])/.test(password)) {
+            toast.error("Password must contain at least one uppercase letter", {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                transition: Slide
+            })
+            return
+        }
+        else if (!/(?=.*[!@#$&*])/.test(password)) {
+            toast.error('Password must contain at least a spacial character (!@#$&*)', {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                transition: Slide
+            })
+            return
+        }
+        else if (!/(?=.*[0-9])/.test(password)) {
+            toast.error('Password must contain at least one number', {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                transition: Slide
+            })
+            return
+        }
+        else if (password.length < 8) {
+            toast.error('Password must be 8 characters long', {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                transition: Slide
+            })
+            return
+        }
+
         // create user with email
         createUserWithEmail(email, password)
             .then(result => {
@@ -46,8 +105,8 @@ const Register = () => {
 
     // User profile update event handler
     const updateUserProfile = (user, name, photo) => {
-        updateProfile(user,{
-            displayName: name , photoURL: photo
+        updateProfile(user, {
+            displayName: name, photoURL: photo
         })
     }
 
@@ -105,6 +164,18 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Slide} />
         </div>
     );
 };
