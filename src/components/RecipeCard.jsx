@@ -1,6 +1,6 @@
 import React from 'react';
 import FavBtn from './FavBtn';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Toastify prevent duplicate
@@ -41,19 +41,6 @@ const RecipeCard = ({ recipe }) => {
                     <button className="tooltip " data-tip="Add to favorite" onClick={addToFav}><FavBtn></FavBtn></button>
                 </div>
             </div>
-            <ToastContainer
-                position="top-center"
-                autoClose={2000}
-                limit={1}
-                hideProgressBar
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss={false}
-                draggable={false}
-                pauseOnHover
-                theme="light"
-            />
         </div>
     );
 };

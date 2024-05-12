@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import img from '../images/register.jpg'
@@ -9,6 +9,8 @@ import { Slide, ToastContainer, toast } from 'react-toastify';
 const Register = () => {
     // Authentication context
     const { createUserWithGoogle, createUserWithEmail } = useContext(AuthContext)
+
+    const navigate = useNavigate()
 
     // Register event handler
     const handleRegister = event => {

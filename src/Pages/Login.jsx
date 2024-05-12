@@ -1,14 +1,20 @@
 import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import img from '../images/login.jpg'
-import { Slide, ToastContainer, toast } from 'react-toastify';
+import { Slide, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     // Authentication context
     const { signInWithEmail, createUserWithGoogle, createUserWithGitHub } = useContext(AuthContext)
+
+    const location = useLocation()
+    const navigate = useNavigate()
+    console.log(location);
+   
+    const from = location.state?.from?.pathname || '/'
 
     // Login event handler
     const handleLogin = event => {
@@ -24,6 +30,7 @@ const Login = () => {
                 const loggedUser = result.user
                 console.log(loggedUser);
                 form.reset()
+                navigate(from)
             })
             .catch(error => {
                 console.log(error)
@@ -47,6 +54,7 @@ const Login = () => {
             .then(result => {
                 const createdUser = result.user
                 console.log(createdUser);
+                navigate(from)
             })
             .catch(error => {
                 console.log(error);
@@ -60,7 +68,7 @@ const Login = () => {
                 const createdUser = result.user
                 console.log(createdUser);
             })
-            .catch(error=>console.log(error))
+            .catch(error => console.log(error))
     }
 
 
@@ -101,18 +109,6 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss={false}
-                draggable={false}
-                pauseOnHover={false}
-                theme="light"
-                transition:Slide />
         </div>
     );
 };

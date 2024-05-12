@@ -6,6 +6,7 @@ import Login from "../Pages/Login";
 import LoginLayout from "../layout/LoginLayout/LoginLayout";
 import Register from "../Pages/Register";
 import ChefRecipes from "../Pages/ChefRecipes";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
     // Main Layout
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'recipes/:id',
-                element: <ChefRecipes />,
+                element: <PrivetRoute><ChefRecipes /></PrivetRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/chefs/${params.id}`)
             }
         ]

@@ -7,8 +7,7 @@ const ChefRecipes = () => {
     const chefData = useLoaderData()
     console.log(chefData);
     const { chef_name, chef_photo, likes, id, number_of_recipes, recipes, years_of_experience, description } = chefData
-    // destructure recipes
-    const { recipe1, recipe2, recipe3 } = recipes
+
     return (
         <div>
             {/* banner start  */}
