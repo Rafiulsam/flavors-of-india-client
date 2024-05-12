@@ -67,6 +67,7 @@ const Login = () => {
             .then(result => {
                 const createdUser = result.user
                 console.log(createdUser);
+                navigate(from)
             })
             .catch(error => console.log(error))
     }
