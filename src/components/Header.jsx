@@ -24,16 +24,18 @@ const Header = () => {
                     : 'text-black text-xl font-semibold hover:text-gray-300'}>Blog
                 </NavLink>
                 {
-                    user ? <><div className="tooltip tooltip-bottom" data-tip={user.displayName}>
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full" >
-                                <img alt="Tailwind CSS Navbar component" src={user.photoURL? user.photoURL: default_user } />
+                    user ? <><div className="flex gap-1">
+                        <div className='tooltip tooltip-bottom'  data-tip={user.displayName}>
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full" >
+                                    <img alt="Tailwind CSS Navbar component" src={user.photoURL ? user.photoURL : default_user} />
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <button className='flex items-center gap-1' onClick={handleLogout}><FaSignOutAlt /> <small>SignOut</small></button>
+                    </div>
                     </>
-                        : <Link to={'/login'} className='text-black flex items-center gap-1'><FaSignInAlt /> Sign In</Link>
+                        : <div className='flex gap-1'><Link to={'/login'} className='text-black flex items-center gap-1 hover:text-gray-300'><FaSignInAlt /> Sign In</Link> / <Link className='hover:text-gray-300' to={'/register'}>Register</Link></div>
                 }
 
             </div>

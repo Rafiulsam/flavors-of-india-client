@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     // Authentication context
-    const { signInWithEmail, createUserWithGoogle } = useContext(AuthContext)
+    const { signInWithEmail, createUserWithGoogle, createUserWithGitHub } = useContext(AuthContext)
 
     // Login event handler
     const handleLogin = event => {
@@ -52,6 +52,18 @@ const Login = () => {
                 console.log(error);
             })
     }
+
+    // Github sign in event handler
+    const handleGithubLogin = () => {
+        createUserWithGitHub()
+            .then(result => {
+                const createdUser = result.user
+                console.log(createdUser);
+            })
+            .catch(error=>console.log(error))
+    }
+
+
     return (
         <div className="hero min-h-screen bg-cover bg-center relative" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url(${img})` }}>
             <div className="hero-content flex-col mt-20">
@@ -85,13 +97,10 @@ const Login = () => {
                     <p className="text-white mt-7 mb-3">Or Sign Up Using</p>
                     <div className='flex justify-evenly text-white text-2xl mb-10'>
                         <button onClick={handleGoogleLogin}> <FaGoogle></FaGoogle></button>
-                        <button>
-                            <FaGithub></FaGithub>
-                        </button>
+                        <button onClick={handleGithubLogin}><FaGithub></FaGithub></button>
                     </div>
                 </div>
             </div>
-            <p>{error}</p>
             <ToastContainer
                 position="top-center"
                 autoClose={5000}

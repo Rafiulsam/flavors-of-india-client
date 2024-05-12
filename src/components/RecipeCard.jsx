@@ -24,20 +24,21 @@ const RecipeCard = ({ recipe }) => {
         });
     }
     return (
-        <div className="card w-full bg-base-100 shadow-xl">
+        <div className="card w-full bg-base-100 shadow-xl mb-40">
             <div className="card-body">
                 <h2 className="card-title">{recipe_name}</h2>
-
+                <hr />
                 <div>
                     <strong>Ingredients:</strong>
                     {
-                        ingredients.map((ingredient, i) => <span className=' ms-1 text-xs' key={i}>{ingredient},</span>)
+                        ingredients.map((ingredient, i) => <span className=' ms-1 text-sm' key={i}>{ingredient},</span>)
                     }
                 </div>
                 <p><strong>Cooking method:</strong> {cooking_method}</p>
+                <hr />
                 <div className="card-actions items-center">
                     <p><strong>Ratings: </strong>{rating}</p>
-                    <button className="tooltip" data-tip="Add to favorite" onClick={addToFav}><FavBtn></FavBtn></button>
+                    <button className="tooltip " data-tip="Add to favorite" onClick={addToFav}><FavBtn></FavBtn></button>
                 </div>
             </div>
             <ToastContainer
