@@ -63,8 +63,8 @@ const Register = () => {
             })
             return
         }
-        else if (password.length < 8) {
-            toast.error('Password must be 8 characters long', {
+        else if (password.length < 6) {
+            toast.error('Password must be 6 characters long', {
                 position: "bottom-center",
                 autoClose: 5000,
                 hideProgressBar: true,
