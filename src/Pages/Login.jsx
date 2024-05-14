@@ -1,19 +1,21 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import img from '../images/login.jpg'
 import { Slide, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
 
 const Login = () => {
     // Authentication context
     const { signInWithEmail, createUserWithGoogle, createUserWithGitHub } = useContext(AuthContext)
 
+    const [showPass, setShowPass] = useState(false)
+    const [passValue, setPassValue] = useState('')
     const location = useLocation()
     const navigate = useNavigate()
-    console.log(location);
-   
+
     const from = location.state?.from?.pathname || '/'
 
     // Login event handler
@@ -72,6 +74,13 @@ const Login = () => {
             .catch(error => console.log(error))
     }
 
+    const handlePassShow = () => {
+        setShowPass(!showPass)
+    }
+
+    const handlePasswordChange = event => {
+        setPassValue(event.target.value);
+    }
 
     return (
         <div className="hero min-h-screen bg-cover bg-center relative" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url(${img})` }}>
@@ -91,11 +100,19 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="Enter your password" className="input input-bordered" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                            <div className='relative'>
+                                <input type={showPass ? 'text' : 'password'} value={passValue} onChange={handlePasswordChange} name='password' placeholder="Enter your password" className="input input-bordered" required />
+                                {
+                                    passValue.length > 0 && (<div className='absolute top-4 right-6' onClick={handlePassShow} role='button'>
+                                        {showPass ? <FaRegEye></FaRegEye> :
+                                            <FaRegEyeSlash></FaRegEyeSlash>}
+                                    </div>)
+                                }
+                            </div>
                         </div>
+                        <label className="label p-0">
+                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                        </label>
                         <div className="form-control mt-6">
                             <button className="btn btn-neutral">Sign In</button>
                         </div>
