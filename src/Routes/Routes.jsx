@@ -7,12 +7,14 @@ import LoginLayout from "../layout/LoginLayout/LoginLayout";
 import Register from "../Pages/Register";
 import ChefRecipes from "../Pages/ChefRecipes";
 import PrivetRoute from "./PrivetRoute";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
     // Main Layout
     {
         path: '/',
         element: <Main />,
+        errorElement:<ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
