@@ -8,6 +8,7 @@ import Register from "../Pages/Register";
 import ChefRecipes from "../Pages/ChefRecipes";
 import PrivetRoute from "./PrivetRoute";
 import ErrorPage from "../Pages/ErrorPage";
+import FavoriteRecipes from "../Pages/FavoriteRecipes";
 
 const router = createBrowserRouter([
     // Main Layout
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
                 path: 'recipes/:id',
                 element: <PrivetRoute><ChefRecipes /></PrivetRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/chefs/${params.id}`)
+            },
+            {
+                path:'favorite-recipes',
+                element:<FavoriteRecipes></FavoriteRecipes>
             }
         ]
     },

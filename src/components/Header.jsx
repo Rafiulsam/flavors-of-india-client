@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaSignOutAlt, FaSignInAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaSignInAlt, FaHeart } from "react-icons/fa";
 import Logo from '../images/logo.png'
 import { AuthContext } from '../Providers/AuthProvider';
 import default_user from '../images/default_user.png'
@@ -22,6 +22,9 @@ const Header = () => {
                 </NavLink>
                 <NavLink to={'/blog'} className={({ isActive }) => isActive ? 'text-white font-semibold underline underline-offset-8 rounded-lg text-xl hover:text-gray-300'
                     : 'text-black text-xl font-semibold hover:text-gray-300'}>Blog
+                </NavLink>
+                <NavLink to={'/favorite-recipes'} className={({ isActive }) => isActive ? 'text-white font-semibold underline underline-offset-8 rounded-lg text-xl hover:text-gray-300 tooltip tooltip-bottom'
+                    : 'text-black text-xl font-semibold hover:text-gray-300  tooltip tooltip-bottom'} data-tip='Favorite recipes'><FaHeart></FaHeart>
                 </NavLink>
                 {
                     user ? <><div className="flex gap-1">
