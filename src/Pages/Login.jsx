@@ -14,10 +14,11 @@ const Login = () => {
     const [showPass, setShowPass] = useState(false)
     const [passValue, setPassValue] = useState('')
     const location = useLocation()
+    console.log(location);
     const navigate = useNavigate()
 
     const from = location.state?.from?.pathname || '/'
-
+    
     // Login event handler
     const handleLogin = event => {
         // Prevent default form submission

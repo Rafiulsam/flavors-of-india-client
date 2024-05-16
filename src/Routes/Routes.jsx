@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main />,
-        errorElement:<ErrorPage></ErrorPage>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -31,8 +31,9 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/chefs/${params.id}`)
             },
             {
-                path:'favorite-recipes',
-                element:<FavoriteRecipes></FavoriteRecipes>
+                path: 'favorite-recipes',
+                element: <PrivetRoute><FavoriteRecipes></FavoriteRecipes></PrivetRoute>,
+                loader: () => fetch('http://localhost:5000/chefs')
             }
         ]
     },

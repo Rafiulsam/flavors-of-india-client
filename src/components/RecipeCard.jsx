@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import FavBtn from './FavBtn';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addToLocalStorage } from '../utilities/localStorageUtils';
+import { addToLocalStorage, getFromLocalStorage } from '../utilities/localStorageUtils';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-
-// Toastify prevent duplicate
-const customId = "custom-id-yes";
-const customWidth = "mx-auto w-80 lg:w-full";
 
 const RecipeCard = ({ recipe }) => {
     const { _id, recipe_name, cooking_method, ingredients, rating } = recipe;
-    // State to track if recipe is already a favorite
+
     const [isFavorite, setIsFavorite] = useState(false);
 
     useEffect(() => {
-        // Check if the recipe is already a favorite when component mounts
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        // Get favorite recipes from local storage
+        const favorites = getFromLocalStorage()
         setIsFavorite(favorites.includes(_id));
     }, [_id]);
 
@@ -25,7 +20,6 @@ const RecipeCard = ({ recipe }) => {
         setIsFavorite(true);
         // Notify user of success
         toast.success('Successfully added to favorite', {
-            toastId: customId,
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: true,
@@ -33,7 +27,6 @@ const RecipeCard = ({ recipe }) => {
             pauseOnHover: true,
             draggable: false,
             theme: "light",
-            className: customWidth
         });
     }
 
