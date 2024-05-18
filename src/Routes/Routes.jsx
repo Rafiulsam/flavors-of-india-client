@@ -9,6 +9,7 @@ import ChefRecipes from "../Pages/ChefRecipes";
 import PrivetRoute from "./PrivetRoute";
 import ErrorPage from "../Pages/ErrorPage";
 import FavoriteRecipes from "../Pages/FavoriteRecipes";
+import favRecipeLoader from "../loaders/FavRecipeLoader";
 
 const router = createBrowserRouter([
     // Main Layout
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
             {
                 path: 'favorite-recipes',
                 element: <PrivetRoute><FavoriteRecipes></FavoriteRecipes></PrivetRoute>,
-                loader: () => fetch('http://localhost:5000/chefs')
+                loader: favRecipeLoader
             }
         ]
     },

@@ -8,19 +8,31 @@ const addToLocalStorage = id => {
     }
 }
 
-const getFromLocalStorage =()=>{
-    const storedRecipes =  JSON.parse(localStorage.getItem('favorites-recipes')) || [];
+const getFromLocalStorage = () => {
+    const storedRecipes = JSON.parse(localStorage.getItem('favorites-recipes')) || [];
     return storedRecipes
 
 }
 
+const removeFromLocalStorage = id => {
+    console.log(id);
+    const storedRecipes = getFromLocalStorage()
+    const remaining = storedRecipes.filter(recipe => recipe !== id)
+   
+    if (storedRecipes.length !== remaining.length) {
+        console.log(`Removed recipe with ID: ${id}`);
+        localStorage.setItem('favorites-recipes', JSON.stringify(remaining));
+        return
+    }
+}
 
-const removeFromLocalStorage = () => {
+const clearLocalStorage = () => {
     localStorage.removeItem('favorites-recipes')
 }
 
 export {
     addToLocalStorage,
     getFromLocalStorage,
+    clearLocalStorage,
     removeFromLocalStorage
 }

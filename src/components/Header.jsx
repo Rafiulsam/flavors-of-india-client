@@ -4,7 +4,7 @@ import { FaSignOutAlt, FaSignInAlt, FaHeart } from "react-icons/fa";
 import Logo from '../images/logo.png'
 import { AuthContext } from '../Providers/AuthProvider';
 import default_user from '../images/default_user.png'
-import { removeFromLocalStorage } from '../utilities/localStorageUtils';
+import { clearLocalStorage } from '../utilities/localStorageUtils';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -14,7 +14,7 @@ const Header = () => {
             .then(() => { console.log('user sign out successfully') })
             .catch(error => console.error(error))
 
-        removeFromLocalStorage()
+        clearLocalStorage()
     }
     return (
         <div className="navbar justify-between px-20 bg-gradient-to-t from-orange-400 to-amber-800">
@@ -27,7 +27,7 @@ const Header = () => {
                     : 'text-black text-xl font-semibold hover:text-gray-300'}>Blog
                 </NavLink>
                 <NavLink to={'/favorite-recipes'} className={({ isActive }) => isActive ? 'text-white font-semibold underline underline-offset-8 rounded-lg text-xl hover:text-gray-300 tooltip tooltip-bottom py-3'
-                    : 'text-black text-xl font-semibold py-3 hover:text-gray-300  tooltip tooltip-bottom'} data-tip='My favorite recipes'><FaHeart></FaHeart>
+                    : 'text-black text-xl font-semibold py-3 hover:text-gray-300  tooltip tooltip-bottom'} data-tip='Favorite recipes'><FaHeart></FaHeart>
                 </NavLink>
                 {
                     user ? <><div className="flex gap-1">
