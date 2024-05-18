@@ -1,9 +1,9 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import FavRecipe from '../components/FavRecipe';
 
 const FavoriteRecipes = () => {
     const chefsData = useLoaderData()
-    console.log(chefsData);
 
     return (
         <div>

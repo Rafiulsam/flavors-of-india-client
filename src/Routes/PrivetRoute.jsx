@@ -5,7 +5,6 @@ import Spinner from '../components/Spinner';
 const PrivetRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const location = useLocation()
-    console.log(location);
 
     if (loading) {
         return <Spinner />

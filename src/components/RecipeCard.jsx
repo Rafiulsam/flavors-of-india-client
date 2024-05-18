@@ -5,6 +5,7 @@ import { addToLocalStorage, getFromLocalStorage } from '../utilities/localStorag
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 const RecipeCard = ({ recipe }) => {
+    console.log(recipe);
     const { _id, recipe_name, cooking_method, ingredients, rating } = recipe;
 
     const [isFavorite, setIsFavorite] = useState(false);

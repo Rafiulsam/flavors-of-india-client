@@ -5,8 +5,8 @@ import RecipeCard from '../components/RecipeCard';
 
 const ChefRecipes = () => {
     const chefData = useLoaderData()
-    console.log(chefData);
-    const { chef_name, chef_photo, likes, id, number_of_recipes, recipes, years_of_experience, description } = chefData
+    const { chef_name, chef_photo, likes, number_of_recipes, recipes, years_of_experience, description } = chefData
+    console.log(recipes);
 
     return (
         <div>
@@ -30,7 +30,7 @@ const ChefRecipes = () => {
             <h1 className='mt-10 text-5xl font-bold text-center'>Recipes</h1>
             <div className='mt-20 grid grid-cols-3 gap-5 container mx-auto'>
                 {
-                    Object.keys(recipes).map((recipe, i) => <RecipeCard key={i} recipe={recipes[recipe]}></RecipeCard>)
+                    recipes.map((recipe, i) => <RecipeCard key={i} recipe={recipe}></RecipeCard>)
                 }
             </div>
         </div>
