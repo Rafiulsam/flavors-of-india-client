@@ -12,8 +12,8 @@ const ChefRecipes = () => {
         <div>
             {/* banner start  */}
             <div className="hero min-h-screen bg-cover" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.7) 100%), url(${img})` }}>
-                <div className="hero-content mx-6 flex-col lg:flex-row">
-                    <img src={chef_photo} className="max-w-sm h-72 rounded-lg shadow-2xl" />
+                <div className="lg:hero-content mx-6 flex-col lg:flex-row">
+                    <img src={chef_photo} className="lg:max-w-sm h-72 rounded-lg shadow-2xl" />
                     <div className='text-white'>
                         <h1 className="text-5xl font-bold">{chef_name}</h1>
                         <p className="py-6">{description}</p>
@@ -28,7 +28,7 @@ const ChefRecipes = () => {
             </div>
             {/* banner end */}
             <h1 className='mt-10 text-5xl font-bold text-center'>Recipes</h1>
-            <div className='mt-20 grid grid-cols-3 gap-5 container mx-auto'>
+            <div className='mt-20 lg:grid lg:grid-cols-3 gap-5 container mx-auto'>
                 {
                     recipes.map((recipe, i) => <RecipeCard key={i} recipe={recipe}></RecipeCard>)
                 }

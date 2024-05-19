@@ -4,6 +4,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { addToLocalStorage, getFromLocalStorage } from '../utilities/localStorageUtils';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
+const customWidth = "mx-auto w-80 lg:w-full";
+
 const RecipeCard = ({ recipe }) => {
     console.log(recipe);
     const { _id, recipe_name, cooking_method, ingredients, rating } = recipe;
@@ -20,7 +22,7 @@ const RecipeCard = ({ recipe }) => {
         addToLocalStorage(_id);
         setIsFavorite(true);
         // Notify user of success
-        toast.success('Successfully added to favorite', {
+        toast.success('Recipe successfully added to favorite', {
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: true,
@@ -28,11 +30,12 @@ const RecipeCard = ({ recipe }) => {
             pauseOnHover: true,
             draggable: false,
             theme: "light",
+            className:customWidth
         });
     }
 
     // set current icon
-    const currentIcon = isFavorite? <FaHeart></FaHeart> : <FaRegHeart></FaRegHeart>
+    const currentIcon = isFavorite ? <FaHeart></FaHeart> : <FaRegHeart></FaRegHeart>
     return (
         <div className="card w-full bg-base-100 shadow-xl mb-40">
             <div className="card-body">
@@ -48,7 +51,7 @@ const RecipeCard = ({ recipe }) => {
                 <hr />
                 <div className="card-actions items-center">
                     <p><strong>Ratings: </strong>{rating}</p>
-                    <button className={isFavorite? "":"tooltip"} data-tip="Add to favorite" onClick={()=> addToFav(_id)} disabled={isFavorite}>{currentIcon}</button>
+                    <button className={isFavorite ? "" : "tooltip"} data-tip="Add to favorite" onClick={() => addToFav(_id)} disabled={isFavorite}>{currentIcon}</button>
                 </div>
             </div>
         </div>

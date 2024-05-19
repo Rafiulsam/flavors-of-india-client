@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import FavRecipe from '../components/FavRecipe';
 import { removeFromLocalStorage } from '../utilities/localStorageUtils';
+import { toast } from 'react-toastify';
 
 const FavoriteRecipes = () => {
     const recipesData = useLoaderData()
@@ -11,6 +12,15 @@ const FavoriteRecipes = () => {
         const remaining = favorites.filter(recipe => recipe._id !== id)
         setFavorites(remaining)
         removeFromLocalStorage(id)
+        toast.success('Recipe successfully removed from favorite', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            theme: "light",
+        })
     }
     return (
         <div className='container mx-auto mb-80'>

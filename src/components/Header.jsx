@@ -17,9 +17,12 @@ const Header = () => {
         clearLocalStorage()
     }
     return (
-        <div className="navbar justify-between px-20 bg-gradient-to-t from-orange-400 to-amber-800">
-            <Link to='/' className="text-white font-bold text-2xl"><img className='w-52' src={Logo} alt="" /></Link>
-            <div className='gap-8'>
+        <div className="navbar flex-row-reverse md:flex-row lg:flex-row justify-between lg:px-20 bg-gradient-to-t from-orange-400 to-amber-800">
+            {/* Logo */}
+            <Link to='/' className="text-white font-bold text-2xl"><img className='max-w-40 lg:max-w-52' src={Logo} alt="" />
+            </Link>
+
+            <div className='hidden md:flex lg:flex gap-8'>
                 <NavLink to='/' className={({ isActive }) => isActive ? ' text-white font-semibold underline underline-offset-8 rounded-lg text-xl hover:text-gray-300'
                     : 'text-black text-xl  font-semibold hover:text-gray-300'}>Home
                 </NavLink>
@@ -44,6 +47,36 @@ const Header = () => {
                         : <div className='flex gap-1'><Link to={'/login'} className='text-black flex items-center gap-1 hover:text-gray-300'><FaSignInAlt /> Sign In</Link> / <Link className='hover:text-gray-300' to={'/register'}>Register</Link></div>
                 }
 
+            </div>
+            <div className="sm:hidden dropdown">
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                </div>
+                <ul tabIndex={0} className="bg-gradient-to-t from-orange-400 to-amber-800 menu menu-sm dropdown-content mt-3 z-[1] p-2 w-40 shadow bg-base-100 rounded-box">
+                    <li> <NavLink to='/' className={({ isActive }) => isActive ? ' font-semibold rounded-lg'
+                        : 'text-black font-semibold'}>Home
+                    </NavLink></li>
+                    <li><NavLink to='/blog' className={({ isActive }) => isActive ? ' font-semibold rounded-lg'
+                        : 'text-black font-semibold'}>Blog
+                    </NavLink></li>
+                    <li><NavLink to='/favorite-recipes' className={({ isActive }) => isActive ? ' font-semibold rounded-lg'
+                        : 'text-black font-semibold'}>Favorite recipes
+                    </NavLink></li>
+                    {
+                    user ? <><div className="flex gap-1">
+                        <div className='tooltip tooltip-bottom' data-tip={user.displayName}>
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full" >
+                                    <img alt="Tailwind CSS Navbar component" src={user.photoURL ? user.photoURL : default_user} />
+                                </div>
+                            </div>
+                        </div>
+                        <button className='flex items-center gap-1' onClick={handleLogout}><FaSignOutAlt /> <small>SignOut</small></button>
+                    </div>
+                    </>
+                        : <div className='flex gap-1'><Link to={'/login'} className='text-black flex items-center gap-1 hover:text-gray-300'><FaSignInAlt /> Sign In</Link> / <Link className='hover:text-gray-300' to={'/register'}>Register</Link></div>
+                }
+                </ul>
             </div>
         </div>
     );

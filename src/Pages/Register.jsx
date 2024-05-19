@@ -140,7 +140,7 @@ const Register = () => {
         <div className="hero min-h-screen bg-cover bg-center relative" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url(${img})` }}>
             <div className="hero-content flex-col mt-20">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-white text-5xl font-bold mb-7">Please Register !</h1>
+                    <h1 className="text-white text-3xl lg:text-5xl font-bold mb-7">Please Register !</h1>
                 </div>
                 <div className="card shrink-0 w-full max-w-sm bg-opacity-80 shadow-2xl bg-base-100">
                     <form className="card-body" onSubmit={handleRegister}>
