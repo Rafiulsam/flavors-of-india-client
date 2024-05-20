@@ -18,7 +18,7 @@ const Login = () => {
     const navigate = useNavigate()
 
     const from = location.state?.from?.pathname || '/'
-    
+
     // Login event handler
     const handleLogin = event => {
         // Prevent default form submission
@@ -101,14 +101,16 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            
-                                <input type={showPass ? 'text' : 'password'} value={passValue} onChange={handlePasswordChange} name='password' placeholder="Enter your password" className="input input-bordered" required />
+
+                            <input type={showPass ? 'text' : 'password'} value={passValue} onChange={handlePasswordChange} name='password' placeholder="Enter your password" className="input input-bordered" required />
+                            <div className='relative'>
                                 {
-                                    passValue.length > 0 && (<div className='absolute top-44 right-11' onClick={handlePassShow} role='button'>
+                                    passValue.length > 0 && (<div className='absolute bottom-4 right-3' onClick={handlePassShow} role='button'>
                                         {showPass ? <FaRegEye></FaRegEye> :
                                             <FaRegEyeSlash></FaRegEyeSlash>}
                                     </div>)
                                 }
+                            </div>
                         </div>
                         <label className="label p-0">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>

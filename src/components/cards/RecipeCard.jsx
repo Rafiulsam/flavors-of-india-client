@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addToLocalStorage, getFromLocalStorage } from '../utilities/localStorageUtils';
+import { addToLocalStorage, getFromLocalStorage } from '../../utilities/localStorageUtils';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 const customWidth = "mx-auto w-80 lg:w-full";
 
 const RecipeCard = ({ recipe }) => {
     console.log(recipe);
-    const { _id, recipe_name, cooking_method, ingredients, rating } = recipe;
+    const { _id, recipe_name, cooking_method, ingredients, rating, img } = recipe;
 
     const [isFavorite, setIsFavorite] = useState(false);
 
@@ -30,7 +30,7 @@ const RecipeCard = ({ recipe }) => {
             pauseOnHover: true,
             draggable: false,
             theme: "light",
-            className:customWidth
+            className: customWidth
         });
     }
 
@@ -39,7 +39,10 @@ const RecipeCard = ({ recipe }) => {
     return (
         <div className="card w-full bg-base-100 shadow-xl mb-40">
             <div className="card-body">
-                <h2 className="card-title">{recipe_name}</h2>
+
+                <img src={img} alt={recipe_name} className="rounded-xl h-80" />
+
+                <h2 className="card-title text-2xl">{recipe_name}</h2>
                 <hr />
                 <div>
                     <strong>Ingredients:</strong>

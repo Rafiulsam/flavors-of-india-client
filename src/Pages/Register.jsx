@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import React, { useContext, useState } from 'react';
+import { FaGithub, FaGoogle, FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
@@ -9,7 +9,8 @@ import { Slide, ToastContainer, toast } from 'react-toastify';
 const Register = () => {
     // Authentication context
     const { createUserWithGoogle, createUserWithEmail } = useContext(AuthContext)
-
+    const [showPass, setShowPass] = useState(false)
+    const [passValue, setPassValue] = useState('')
     const navigate = useNavigate()
 
     // Register event handler
@@ -136,6 +137,14 @@ const Register = () => {
         })
     }
 
+    const handlePassShow = () => {
+        setShowPass(!showPass)
+    }
+
+    const handlePasswordChange = event => {
+        setPassValue(event.target.value);
+    }
+
     return (
         <div className="hero min-h-screen bg-cover bg-center relative" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%), url(${img})` }}>
             <div className="hero-content flex-col mt-20">
@@ -166,7 +175,17 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="Enter your password" className="input input-bordered" required />
+                            <input type={showPass ? 'text' : 'password'} value={passValue} onChange={handlePasswordChange} name='password' placeholder="Enter your password" className="input input-bordered" required />
+                            <div className='relative'>
+                                
+                                    {
+                                        passValue.length > 0 && (<div className='absolute bottom-4 right-3' onClick={handlePassShow} role='button'>
+                                            {showPass ? <FaRegEye></FaRegEye> :
+                                                <FaRegEyeSlash></FaRegEyeSlash>}
+                                        </div>)
+                                    }
+                                
+                            </div>
                         </div>
                         <div className="form-control">
                             <label className="justify-start gap-1 label cursor-pointer">

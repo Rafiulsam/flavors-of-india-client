@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ChefCard from './ChefCard';
+import ChefCard from '../cards/ChefCard';
 
 const ChefSection = () => {
     const [chefs, setChefs] = useState([])
