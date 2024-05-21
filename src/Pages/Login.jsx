@@ -9,11 +9,12 @@ import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
 
 const Login = () => {
     // Authentication context
-    const { signInWithEmail, createUserWithGoogle, createUserWithGitHub } = useContext(AuthContext)
+    const { signInWithEmail, createUserWithGoogle, createUserWithGitHub, resetPassword } = useContext(AuthContext)
 
     const [showPass, setShowPass] = useState(false)
     const [passValue, setPassValue] = useState('')
     const location = useLocation()
+    const emailRef = useRef()
     console.log(location);
     const navigate = useNavigate()
 
@@ -75,6 +76,36 @@ const Login = () => {
             .catch(error => console.log(error))
     }
 
+    const handlePassReset = () => {
+        const email = emailRef.current.value;
+        if (!email) {
+            toast.warn('Please enter an email address', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                theme: "light",
+            })
+            return
+        }
+        resetPassword(email)
+        .then(()=>{
+            toast.info('Please check your email',{
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                theme: "light",
+            })
+        }) .catch(error=>{
+            console.log(error);
+        })
+    }
+
     const handlePassShow = () => {
         setShowPass(!showPass)
     }
@@ -95,7 +126,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name='email' placeholder="Enter your email" className="input input-bordered" required />
+                            <input type="email" name='email' ref={emailRef} placeholder="Enter your email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -113,7 +144,7 @@ const Login = () => {
                             </div>
                         </div>
                         <label className="label p-0">
-                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                            <a onClick={handlePassReset} className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
                         <div className="form-control mt-6">
                             <button className="btn btn-neutral">Sign In</button>

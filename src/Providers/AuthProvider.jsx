@@ -1,4 +1,4 @@
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.init';
 
@@ -37,6 +37,11 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
     }
 
+    // Password reset
+    const resetPassword = (email) => {
+        return sendPasswordResetEmail(auth, email)
+    }
+
     // set an auth state change observer
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, loggedUser => {
@@ -56,7 +61,8 @@ const AuthProvider = ({ children }) => {
         createUserWithGitHub,
         createUserWithEmail,
         signInWithEmail,
-        logOut
+        logOut,
+        resetPassword
     }
     return (
         <div>

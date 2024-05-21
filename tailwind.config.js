@@ -5,10 +5,13 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily:{
+      fontFamily: {
         Outfit: ["Outfit", 'sans-serif']
       }
     },
+  },
+  daisyui: {
+    themes: ["light"],
   },
   plugins: [
     require('daisyui'),

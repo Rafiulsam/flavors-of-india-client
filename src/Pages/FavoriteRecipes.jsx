@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import FavRecipe from '../components/FavRecipe';
+import FavRecipe from '../components/cards/FavRecipe';
 import { removeFromLocalStorage } from '../utilities/localStorageUtils';
 import { toast } from 'react-toastify';
 
