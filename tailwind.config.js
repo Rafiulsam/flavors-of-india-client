@@ -2,6 +2,7 @@
 export default {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
+    './public/index.html'
   ],
   theme: {
     extend: {
@@ -11,7 +12,7 @@ export default {
     },
   },
   daisyui: {
-    themes: ["light"],
+    themes: ["light", "dark"],
   },
   plugins: [
     require('daisyui'),

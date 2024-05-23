@@ -5,6 +5,7 @@ import Logo from '../images/logo.png'
 import { AuthContext } from '../Providers/AuthProvider';
 import default_user from '../images/default_user.png'
 import { clearLocalStorage } from '../utilities/localStorageUtils';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -38,19 +39,19 @@ const Header = () => {
                         <div className='tooltip tooltip-bottom' data-tip={user.displayName}>
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full" >
-                                    <img alt="Tailwind CSS Navbar component" src={user.photoURL ? user.photoURL : default_user} />
+                                    <img alt="Profile" src={user.photoURL ? user.photoURL : default_user} />
                                 </div>
                             </div>
                         </div>
-                        <button className='flex items-center gap-1 hover:text-gray-300' onClick={handleLogout}><FaSignOutAlt /> <small>SignOut</small></button>
+                        <button className='flex items-center gap-1 hover:text-gray-300 text-black' onClick={handleLogout}><FaSignOutAlt /> <small>SignOut</small></button>
                     </div>
                     </>
-                        : <div className='flex gap-1'><Link to={'/login'} className='text-black flex items-center gap-1 hover:text-gray-300'><FaSignInAlt /> Sign In</Link> / <Link className='hover:text-gray-300' to={'/register'}>Register</Link></div>
+                        : <div className='flex gap-1 text-black'><Link to={'/login'} className='flex items-center gap-1 hover:text-gray-300'><FaSignInAlt /> Sign In</Link> / <Link className='hover:text-gray-300' to={'/register'}>Register</Link></div>
                 }
-
+                <ThemeToggle></ThemeToggle>
             </div>
             {/*nav dropdown*/}
-            <div className="sm:hidden dropdown">
+            <div className="sm:hidden dropdown text-black">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                 </div>
@@ -79,6 +80,7 @@ const Header = () => {
                         : <div className='flex gap-1'><Link to={'/login'} className='text-black flex items-center gap-1 hover:text-gray-300'><FaSignInAlt /> Sign In</Link> / <Link className='hover:text-gray-300' to={'/register'}>Register</Link></div>
                 }
                 </ul>
+                <ThemeToggle></ThemeToggle>
             </div>
         </div>
     );
