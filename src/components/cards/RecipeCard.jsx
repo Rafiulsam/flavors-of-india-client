@@ -7,7 +7,6 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 const customWidth = "mx-auto w-80 lg:w-full";
 
 const RecipeCard = ({ recipe }) => {
-    console.log(recipe);
     const { _id, recipe_name, cooking_method, ingredients, rating, img } = recipe;
 
     const [isFavorite, setIsFavorite] = useState(false);

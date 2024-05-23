@@ -29,7 +29,7 @@ const router = createBrowserRouter([
             {
                 path: 'recipes/:id',
                 element: <PrivetRoute><ChefRecipes /></PrivetRoute>,
-                loader: ({ params }) => fetch(`https://flavors-of-india-server.vercel.app/chefs/${params.id}`)
+                loader: ({ params }) => fetch(`https://flavors-of-india-server-rafiul-sams-projects.vercel.app/chefs/${params.id}`)
             },
             {
                 path: 'favorite-recipes',

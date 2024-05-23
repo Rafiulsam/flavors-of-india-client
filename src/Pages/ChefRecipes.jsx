@@ -6,7 +6,6 @@ import RecipeCard from '../components/cards/RecipeCard';
 const ChefRecipes = () => {
     const chefData = useLoaderData()
     const { chef_name, chef_photo, likes, number_of_recipes, recipes, years_of_experience, description } = chefData
-    console.log(recipes);
 
     return (
         <>

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SpiceCard = ({ spices }) => {
-    console.log(spices);
     const { name, description, usage, img } = spices
     return (
         <div className="hero mb-16 lg:w-3/4 mx-auto bg-base-200 rounded-lg">

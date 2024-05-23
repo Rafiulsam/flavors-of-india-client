@@ -1,7 +1,7 @@
 import { getFromLocalStorage } from "../utilities/localStorageUtils"
 
 const favRecipeLoader = async () => {
-    const chefsData = await fetch('https://flavors-of-india-server.vercel.app/chefs')
+    const chefsData = await fetch('https://flavors-of-india-server-rafiul-sams-projects.vercel.app/chefs')
     const chefs = await chefsData.json()
     
     // Flatten the recipes array and add chef_name to each recipe

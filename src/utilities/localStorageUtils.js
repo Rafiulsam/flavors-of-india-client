@@ -15,12 +15,10 @@ const getFromLocalStorage = () => {
 }
 
 const removeFromLocalStorage = id => {
-    console.log(id);
     const storedRecipes = getFromLocalStorage()
     const remaining = storedRecipes.filter(recipe => recipe !== id)
    
     if (storedRecipes.length !== remaining.length) {
-        console.log(`Removed recipe with ID: ${id}`);
         localStorage.setItem('favorites-recipes', JSON.stringify(remaining));
         return
     }

@@ -15,7 +15,6 @@ const Login = () => {
     const [passValue, setPassValue] = useState('')
     const location = useLocation()
     const emailRef = useRef()
-    console.log(location);
     const navigate = useNavigate()
 
     const from = location.state?.from?.pathname || '/'
@@ -27,17 +26,14 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
         // user sign in
         signInWithEmail(email, password)
             .then(result => {
                 const loggedUser = result.user
-                console.log(loggedUser);
                 form.reset()
                 navigate(from)
             })
             .catch(error => {
-                console.log(error)
                 toast.error(error.message, {
                     position: "bottom-center",
                     autoClose: 5000,
@@ -57,11 +53,10 @@ const Login = () => {
         createUserWithGoogle()
             .then(result => {
                 const createdUser = result.user
-                console.log(createdUser);
                 navigate(from)
             })
             .catch(error => {
-                console.log(error);
+                console.error(error);
             })
     }
 
@@ -70,10 +65,9 @@ const Login = () => {
         createUserWithGitHub()
             .then(result => {
                 const createdUser = result.user
-                console.log(createdUser);
                 navigate(from)
             })
-            .catch(error => console.log(error))
+            .catch(error => console.error(error))
     }
 
     const handlePassReset = () => {
@@ -102,7 +96,7 @@ const Login = () => {
                 theme: "light",
             })
         }) .catch(error=>{
-            console.log(error);
+            console.error(error);
         })
     }
 

@@ -22,7 +22,6 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password);
         // Validate password strength
         if (!/(?=.*[A-Z])/.test(password)) {
             toast.error("Password must contain at least one uppercase letter", {
@@ -85,8 +84,8 @@ const Register = () => {
         createUserWithEmail(email, password)
             .then(result => {
                 const createdUser = result.user
-                console.log(createdUser);
                 updateUserProfile(createdUser, name, photo)
+                navigate('/')
                 form.reset()
                 toast.success('Account has been successfully created', {
                     position: "bottom-center",
@@ -102,7 +101,6 @@ const Register = () => {
 
             })
             .catch(error => {
-                console.log(error)
                 toast.error(error.message, {
                     position: "bottom-center",
                     autoClose: 5000,
@@ -123,10 +121,9 @@ const Register = () => {
         createUserWithGoogle()
             .then(result => {
                 const createdUser = result.user
-                console.log(createdUser);
             })
             .catch(error => {
-                console.log(error);
+                console.error(error);
             })
     }
 
@@ -177,14 +174,14 @@ const Register = () => {
                             </label>
                             <input type={showPass ? 'text' : 'password'} value={passValue} onChange={handlePasswordChange} name='password' placeholder="Enter your password" className="input input-bordered" required />
                             <div className='relative'>
-                                
-                                    {
-                                        passValue.length > 0 && (<div className='absolute bottom-4 right-3' onClick={handlePassShow} role='button'>
-                                            {showPass ? <FaRegEye></FaRegEye> :
-                                                <FaRegEyeSlash></FaRegEyeSlash>}
-                                        </div>)
-                                    }
-                                
+
+                                {
+                                    passValue.length > 0 && (<div className='absolute bottom-4 right-3' onClick={handlePassShow} role='button'>
+                                        {showPass ? <FaRegEye></FaRegEye> :
+                                            <FaRegEyeSlash></FaRegEyeSlash>}
+                                    </div>)
+                                }
+
                             </div>
                         </div>
                         <div className="form-control">

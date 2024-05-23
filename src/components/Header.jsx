@@ -6,13 +6,23 @@ import { AuthContext } from '../Providers/AuthProvider';
 import default_user from '../images/default_user.png'
 import { clearLocalStorage } from '../utilities/localStorageUtils';
 import ThemeToggle from './ThemeToggle';
+import { toast } from 'react-toastify';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
 
     const handleLogout = () => {
         logOut()
-            .then(() => { console.log('user sign out successfully') })
+            .then(() => { toast.success('User sign out successfully',{
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+            }) })
             .catch(error => console.error(error))
 
         clearLocalStorage()

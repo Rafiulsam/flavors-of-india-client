@@ -5,7 +5,7 @@ const SpiceSection = () => {
     const [spices, setSpices] = useState([])
 
     useEffect(() => {
-        fetch('https://flavors-of-india-server.vercel.app/spices')
+        fetch('https://flavors-of-india-server-rafiul-sams-projects.vercel.app/spices')
             .then(res => res.json())
             .then(data => setSpices(data))
     }, [])

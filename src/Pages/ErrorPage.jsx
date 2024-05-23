@@ -3,9 +3,8 @@ import { FaArrowLeft } from 'react-icons/fa6';
 import { useNavigate, useRouteError } from 'react-router-dom';
 
 const ErrorPage = () => {
-    const {status, error} = useRouteError()
+    const {status} = useRouteError()
     const navigate =useNavigate()
-    console.error(error)
     return (
         <div className='flex flex-col gap-10 justify-center items-center h-screen'>
             <h1 className='text-3xl lg:text-5xl font-semibold'>Oops! Page not found</h1>
