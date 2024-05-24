@@ -1,4 +1,4 @@
-# Flavors of India - Client
+# Flavors of India
 
 This repository contains the client-side code for the "Flavors of India" application, built with React and Vite. The project showcases various Indian recipes, integrating Firebase for backend services.
 
