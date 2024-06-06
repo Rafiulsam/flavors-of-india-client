@@ -50,6 +50,9 @@ This repository contains the client-side code for the "Flavors of India" applica
 5. **User Profiles**: Manage user profiles and view saved recipes.
 6. **Responsive Design**: Optimized for both desktop and mobile devices.
 
+## Live Link
+Check out the live website here:([Flavors of India](https://flavors-of-india-d6dbf.web.app/)). 
+
 ## Contributing
 
 Feel free to submit issues and pull requests. For major changes, please open an issue first to discuss what you would like to change.
