@@ -51,7 +51,7 @@ This repository contains the client-side code for the "Flavors of India" applica
 6. **Responsive Design**: Optimized for both desktop and mobile devices.
 
 ## Live Link
-Check out the live website here:([Flavors of India](https://flavors-of-india-d6dbf.web.app/)). 
+Check out the live website here:[Flavors of India](https://flavors-of-india-d6dbf.web.app/).
 
 ## Contributing
 
