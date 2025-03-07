@@ -34,14 +34,14 @@ const Header = () => {
             </Link>
             {/* nav items */}
             <div className='hidden md:flex lg:flex gap-8'>
-                <NavLink to='/' className={({ isActive }) => isActive ? ' text-white font-semibold underline underline-offset-8 rounded-lg text-xl hover:text-gray-300'
-                    : 'text-black text-xl  font-semibold hover:text-gray-300'}>Home
+                <NavLink to='/' className={({ isActive }) => `transition ease-in hover:-translate-y-1 ${isActive ? 'text-white font-semibold underline underline-offset-8 rounded-lg text-xl hover:text-gray-300'
+                    : 'text-black text-xl font-semibold hover:text-gray-300'}`}>Home
                 </NavLink>
-                <NavLink to={'/blog'} className={({ isActive }) => isActive ? 'text-white font-semibold underline underline-offset-8 rounded-lg text-xl hover:text-gray-300'
-                    : 'text-black text-xl font-semibold hover:text-gray-300'}>Blog
+                <NavLink to={'/blog'} className={({ isActive }) => `transition ease-in hover:-translate-y-1 ${isActive ? 'text-white font-semibold underline underline-offset-8 rounded-lg text-xl hover:text-gray-300'
+                    : 'text-black text-xl font-semibold hover:text-gray-300'}`}>Blog
                 </NavLink>
-                <NavLink to={'/favorite-recipes'} className={({ isActive }) => isActive ? 'text-white font-semibold underline underline-offset-8 rounded-lg text-xl hover:text-gray-300 tooltip tooltip-bottom py-3'
-                    : 'text-black text-xl font-semibold py-3 hover:text-gray-300  tooltip tooltip-bottom'} data-tip='Favorite recipes'><FaHeart></FaHeart>
+                <NavLink to={'/favorite-recipes'} className={({ isActive }) => isActive ? 'transition ease-in hover:-translate-y-1 text-white font-semibold underline underline-offset-8 rounded-lg text-xl hover:text-gray-300 tooltip tooltip-bottom py-3'
+                    : 'transition ease-in hover:-translate-y-1 text-black text-xl font-semibold py-3 hover:text-gray-300  tooltip tooltip-bottom'} data-tip='Favorite recipes'><FaHeart></FaHeart>
                 </NavLink>
                 {/* profile */}
                 {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addToLocalStorage, getFromLocalStorage } from '../../utilities/localStorageUtils';
@@ -36,7 +36,7 @@ const RecipeCard = ({ recipe }) => {
     // set current icon
     const currentIcon = isFavorite ? <FaHeart></FaHeart> : <FaRegHeart></FaRegHeart>
     return (
-        <div className="card w-full bg-base-100 shadow-xl mb-40">
+        <div className="card w-full bg-base-100 shadow-xl mb-40 transition ease-in-out hover:scale-105">
             <div className="card-body">
 
                 <img src={img} alt={recipe_name} className="rounded-xl h-80" />

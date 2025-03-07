@@ -1,4 +1,3 @@
-import React from 'react';
 import Banner from '../components/Banner';
 import ChefSection from '../components/sections/ChefSection';
 import SpiceSection from '../components/sections/SpiceSection';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaTimesCircle } from 'react-icons/fa';
 
 const FavRecipe = ({ recipe, handleRemoveFavorite }) => {
@@ -12,7 +11,7 @@ const FavRecipe = ({ recipe, handleRemoveFavorite }) => {
                     <h2 >Chef: {chef_name}</h2>
                 </div>
 
-                <button onClick={()=> handleRemoveFavorite(_id)} className='text-3xl text-orange-500'><FaTimesCircle></FaTimesCircle> </button>
+                <button onClick={()=> handleRemoveFavorite(_id)} className='text-3xl text-orange-500 tooltip ' data-tip='Remove'><FaTimesCircle></FaTimesCircle> </button>
 
             </div>
         </div>
